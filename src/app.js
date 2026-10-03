@@ -42,6 +42,7 @@ app.use('/api/v1/products', productRoutes);
 app.use('/api/v1/stores', storeRoutes);
 app.use('/api/v1/inventory', inventoryRoutes);
 app.use('/api/v1/sales', salesRoutes);
+app.use('/api/v1/intents', require('./routes/intents'));
 
 // Catch 404
 app.use((req, res, next) => {
