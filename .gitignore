@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Secrets - never commit real API keys
+.env
+
+# SQLite database files (created at runtime by `npm run db:init`)
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+
+# Generated sample CSVs (created by `npm run seed`)
+data/seed/*.csv
+*.csv
+
+# Test coverage output
+coverage/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
