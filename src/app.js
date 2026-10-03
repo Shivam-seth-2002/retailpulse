@@ -11,6 +11,10 @@ const ApiError = require('./utils/ApiError');
 
 // Routes
 const healthRoutes = require('./routes/health');
+const productRoutes = require('./routes/products');
+const storeRoutes = require('./routes/stores');
+const inventoryRoutes = require('./routes/inventory');
+const salesRoutes = require('./routes/sales');
 
 const app = express();
 
@@ -33,8 +37,11 @@ app.use('/api/', rateLimiter);
 app.use('/api/', audit);
 
 // Mount routes
-// Health is public, no auth required
 app.use('/api/v1/health', healthRoutes);
+app.use('/api/v1/products', productRoutes);
+app.use('/api/v1/stores', storeRoutes);
+app.use('/api/v1/inventory', inventoryRoutes);
+app.use('/api/v1/sales', salesRoutes);
 
 // Catch 404
 app.use((req, res, next) => {
