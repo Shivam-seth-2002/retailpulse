@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { FilterTree } = require('../dataStructures/FilterTree');
+const { FilterTree } = require('../../dataStructures/FilterTree');
 const { compileFilter } = require('../filterCompiler');
 
 const fieldMap = new Map([

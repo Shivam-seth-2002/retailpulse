@@ -35,7 +35,7 @@ function auth(req, res, next) {
   
   // Basic authorization: 'read' keys can only use GET and /api/v1/intents/execute
   if (keyInfo.role === 'read' && req.method !== 'GET') {
-    if (req.method === 'POST' && req.path === '/api/v1/intents/execute') {
+    if (req.method === 'POST' && req.originalUrl.startsWith('/api/v1/intents/execute')) {
       // Allowed
     } else {
       return next(ApiError.forbidden('Read-only API keys cannot perform this action'));
