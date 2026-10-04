@@ -16,11 +16,26 @@ const storeRoutes = require('./routes/stores');
 const inventoryRoutes = require('./routes/inventory');
 const salesRoutes = require('./routes/sales');
 
+const path = require('path');
+
 const app = express();
 
 // Security middleware
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      imgSrc: ["'self'", "data:"],
+      connectSrc: ["'self'"],
+    },
+  },
+}));
 app.use(cors({ origin: config.corsOrigins }));
+
+// Serve static UI dashboard
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Request parsing
 app.use(express.json({ limit: '1mb' }));
